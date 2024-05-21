@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351014482526",
+    "project_id": "natashacollection-a74e3",
+    "storage_bucket": "natashacollection-a74e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351014482526:android:56b95d3698929f0d0d3acf",
+        "android_client_info": {
+          "package_name": "com.example.natashacollection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqxflOPMirozfojnmbiasURU8RmqcNz84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
