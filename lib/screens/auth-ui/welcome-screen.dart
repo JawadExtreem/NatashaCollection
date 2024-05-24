@@ -100,6 +100,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:natasha_collection/controllers/google-singin-controller.dart';
+import 'package:natasha_collection/screens/auth-ui/sign-in-screen.dart';
 import 'package:natasha_collection/utils/app-constant.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -178,7 +179,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Icons.email,
                       color: AppConstant.appTextColor,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => SignInScreen());
+                    },
                     label: Text(
                       'Sign in with email',
                       style: TextStyle(color: AppConstant.appTextColor),
