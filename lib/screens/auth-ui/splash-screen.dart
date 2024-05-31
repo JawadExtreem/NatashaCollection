@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
+import 'package:natasha_collection/controllers/get-user-data-controller.dart';
+import 'package:natasha_collection/screens/admin-panel/admin-main-screen.dart';
 import 'package:natasha_collection/screens/auth-ui/welcome-screen.dart';
 import 'package:natasha_collection/screens/user-panel/main-screen.dart';
 import 'package:natasha_collection/utils/app-constant.dart';
@@ -16,12 +19,30 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 4), () {
-      Get.offAll(() => WelcomeScreen());
+      loggdin(context);
     });
+  }
+
+  Future<void> loggdin(BuildContext context) async {
+    if (user != null) {
+      final GetUserDataController getUserDataController =
+          Get.put(GetUserDataController());
+
+      var userData = await getUserDataController.getUserData(user!.uid);
+
+      if (userData[0]['isAdmin'] == true) {
+        Get.offAll(() => AdminMainScreen());
+      } else {
+        Get.offAll(() => MainScreen());
+      }
+    } else {
+      Get.to(() => WelcomeScreen());
+    }
   }
 
   @override
